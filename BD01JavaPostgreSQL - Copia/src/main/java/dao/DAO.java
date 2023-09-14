@@ -1,6 +1,8 @@
 package dao;
 
 import java.sql.*;
+import java.security.*;
+import java.math.*;
 
 public class DAO {
 	protected Connection conexao;
@@ -15,8 +17,8 @@ public class DAO {
 		String mydatabase = "teste";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-		String username = "ti2cc";
-		String password = "ti@cc";
+		String username = "postgres";
+		String password = "vini4060";
 		boolean status = false;
 
 		try {
@@ -43,5 +45,12 @@ public class DAO {
 			System.err.println(e.getMessage());
 		}
 		return status;
+	}
+	
+	
+	public static String toMD5(String senha) throws Exception {
+		MessageDigest m=MessageDigest.getInstance("MD5");
+		m.update(senha.getBytes(),0, senha.length());
+		return new BigInteger(1,m.digest()).toString(16);
 	}
 }

@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+<title>Controle de Estoque</title>
+</head>
+
+<script type="text/javascript">
+
+function confirmarDeleteProduto(id, descricao, preco) {  
+	
+    if (confirm('Confirmar a exclusão do produto [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {  
+        location.href = '/produto/delete/' + id;
+    }
+}
+function onLoad() {
+    if(document.getElementById("msg").value != ""){
+      alert(document.getElementById("msg").value);
+    }
+}
+</script>
+
+
+<body onload="onLoad()">
+	<h1>Controle de Estoque</h1>
+	<form action="cadastrar_produto.php" method="post">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required><br><br>
+        
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" name="preco" step="0.01" required><br><br>
+        
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required><br><br>
+        
+        <label for="fabricacao">Data de Fabricação:</label>
+        <input type="date" id="fabricacao" name="fabricacao" required><br><br>
+        
+        <label for="validade">Data de Validade:</label>
+        <input type="date" id="validade" name="validade" required><br><br>
+        
+        <input type="submit" value="Cadastrar Produto">
+    </form>
+    
+    <h1>Consulta de Produto</h1>
+    <form action="consultar_produto.php" method="get">
+        <label for="id_consulta">ID do Produto para Consulta:</label>
+        <input type="number" id="id_consulta" name="id_consulta" required><br><br>
+        
+        <input type="submit" value="Consultar Produto">
+    </form>
+
+    <h1>Remoção de Produto</h1>
+    <form action="consultar_produto.php" method="get">
+        <label for="id_consulta">ID do Produto para Remoção:</label>
+        <input type="number" id="id_consulta" name="id_consulta" required><br><br>
+        
+        <input type="submit" value="Remover Produto">
+    </form>
+
+    <h1>Listar Produtos</h1>
+    <form action="listar_produtos.php" method="get">
+        <input type="submit" value="Listar Produtos">
+    </form>
+	<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+}
+
+
+.input--main__style {
+	background-color: #00FF00;
+}
+
+.input--button {
+	font-weight: bold;
+	font-family: Arial;
+	font-size: medium;
+	border-color: transparent;
+	display: block;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.input--register {
+	display: inline;
+}
+
+input {
+	display: block;
+	border-radius: 7px;
+	padding: 10px;
+	border-style: solid;
+	border-color: lightgray;
+	color: black;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+form p {
+	text-align: initial;
+	display: inline;
+	margin-left: 15px;
+}
+
+.p--nomargin {
+	margin-left: 0px;
+	margin-right: 10px;
+}
+</style>
+</body>
+</html>
